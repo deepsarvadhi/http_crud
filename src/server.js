@@ -2,7 +2,9 @@ import http from 'http';
 import url from 'url';
 import routers from './router/Router.js'
 import resdata from './middleware/errorHandling.js'
+import dotenv from 'dotenv';
 
+dotenv.config();
 const server = http.createServer((req, res) => {
     const parsedUrl = url.parse(req.url);
     const routeHandler = routers[parsedUrl.pathname];
@@ -16,7 +18,7 @@ const server = http.createServer((req, res) => {
     }
 });
 
-const port = 3000;
+const port = process.env.PORT || 3011;
 server.listen(port, () => { });
 
 export default { server };
