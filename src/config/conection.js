@@ -5,11 +5,13 @@ const pool = new Pool({
     host: 'localhost',
     database: 'crud',
     password: 'test@123',
-    port: 5433,
+    port: 5444,
 });
 
 pool.connect((err) => {
-    if (err) throw err;
+    if (err) {
+        console.log(err);
+    }
 })
 
 var table = 'create table if not exists state(ID SERIAL PRIMARY KEY,s_name varchar(20) unique )';
